@@ -1,0 +1,287 @@
+@import '../../styles/variables';
+
+.banner-container {
+    position: relative;
+    width: 100%;
+    // margin: 0 auto;
+    margin-top: 80px;
+    padding-bottom: 100px;
+
+    .banner-slider {
+        position: relative;
+        height: 75vh;
+        min-height: 500px;
+        width: 100%;
+    }
+
+    .banner-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.8s ease-in-out;
+
+        &.active {
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 1;
+        }
+    }
+
+    /* Hiệu ứng xuất hiện cho văn bản */
+    @keyframes fadeInDown {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Hiệu ứng cho ảnh: từ nhiễu sang rõ nét */
+    @keyframes imageReveal {
+        0% {
+            filter: blur(8px);
+            opacity: 0.5;
+        }
+
+        100% {
+            filter: blur(0);
+            opacity: 1;
+        }
+    }
+
+    .banner-image {
+        background-color: #f5f5f5;
+        position: absolute;
+        width: 60%;
+        height: 100%;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transform: scale(1.2);
+            transform-origin: top right;
+            /* Áp dụng animation cho ảnh khi slide active */
+            opacity: 0;
+        }
+    }
+
+    /* Khi slide active: kích hoạt hiệu ứng cho ảnh */
+    .banner-slide.active .banner-image img {
+        animation: imageReveal 1s ease forwards;
+    }
+
+    /* Banner content */
+    .banner-content {
+        position: relative;
+        width: 66.66%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        z-index: 5;
+    }
+
+    .text-container {
+        position: absolute;
+        right: 100px;
+        width: 80%;
+        padding: 40px;
+        background-color: rgba(255, 255, 255, 0.3);
+        margin-left: -20%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: $dark;
+            /* Hiệu ứng xuất hiện với delay */
+            opacity: 0;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            color: $dark;
+            opacity: 0;
+        }
+
+        .banner-divider {
+            width: 100px;
+            height: 2px;
+            background-color: $primary;
+            margin: 25px 0;
+            opacity: 0;
+        }
+
+        .cta-button {
+            padding: 12px 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background-color: $primary;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            opacity: 0;
+
+            &:hover {
+                background-color: darken($primary, 10%);
+            }
+        }
+    }
+
+    /* Khi slide active: kích hoạt hiệu ứng text với các delay khác nhau */
+    .banner-slide.active .text-container h1 {
+        animation: fadeInDown 0.5s ease forwards;
+        animation-delay: 0.3s;
+    }
+
+    .banner-slide.active .text-container p {
+        animation: fadeInDown 0.5s ease forwards;
+        animation-delay: 0.5s;
+    }
+
+    .banner-slide.active .text-container .banner-divider {
+        animation: fadeInDown 0.5s ease forwards;
+        animation-delay: 0.7s;
+    }
+
+    .banner-slide.active .text-container .cta-button {
+        animation: fadeInDown 0.5s ease forwards;
+        animation-delay: 0.9s;
+    }
+
+    /* Các nút điều khiển */
+    .slide-control-container {
+        position: absolute;
+        bottom: 0;
+        right: 50%;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 10px;
+        background-color: #fff;
+        color: #000;
+        z-index: 15;
+
+        .slider-control {
+            font-size: 30px;
+            background: transparent;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                color: darken($primary, 10%);
+            }
+        }
+
+        span {
+            font-size: 20px;
+        }
+    }
+
+    /* Responsive styles */
+    @media (max-width: 992px) {
+        .banner-slider {
+            height: 60vh;
+        }
+
+        .banner-slide {
+            flex-direction: column;
+        }
+
+        .banner-image,
+        .banner-content {
+            position: relative;
+            width: 100%;
+            height: 50%;
+        }
+
+        .text-container {
+            width: 90%;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            right: 0;
+            left: 0;
+            position: relative;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .banner-slider {
+            height: 50vh;
+            min-height: 400px;
+        }
+
+        .text-container {
+            padding: 20px;
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+        }
+
+        .slider-control {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .banner-slider {
+            height: 40vh;
+            min-height: 300px;
+        }
+
+        .text-container {
+            padding: 15px;
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                display: none;
+            }
+        }
+
+        .slide-control-container {
+            display: none;
+        }
+
+        .banner-divider {
+            margin: 15px 0;
+        }
+    }
+
+}

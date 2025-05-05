@@ -1,0 +1,64 @@
+@import '../../../../styles/variables';
+
+.collection-bridal-container {
+    margin-top: 80px;
+
+    .collection-bridal-card {
+
+        .card-header {
+            margin: 100px 30px 30px 30px;
+            padding: 30px;
+            background-color: #fae9f1;
+            border-radius: 20px;
+
+            .card-title {
+                font-family: Prata;
+                // text-align: center;
+                font-size: 2rem;
+                line-height: 2.42857rem;
+                font-weight: 400;
+                margin-bottom: 0.5rem;
+
+            }
+
+            .card-description {
+                font-family: Prata;
+                font-size: 1rem;
+                font-weight: 400;
+            }
+
+            .cta-button {
+                margin-top: 20px;
+                padding: 12px 30px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                background-color: $primary;
+                color: white;
+                border: none;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: darken($primary, 10%);
+                }
+            }
+
+        }
+
+        .underline {
+            position: relative;
+            border-top: 1px solid #ddd;
+            margin: 20px 0 50px 0;
+            height: 1px;
+
+            svg {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                z-index: 1;
+            }
+        }
+    }
+}

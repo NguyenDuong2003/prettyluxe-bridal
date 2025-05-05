@@ -1,0 +1,97 @@
+@import '../../styles/variables';
+
+.gallery-section-container {
+    padding: 50px 30px 0 30px;
+
+    .gallery-title {
+        text-align: center;
+        margin-bottom: 50px;
+
+        img {
+            width: 150px;
+            height: 50px;
+        }
+    }
+
+    .gallery-content {
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            padding: 0 5px;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: auto;
+                border-radius: 20px;
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .gallery-item-title {
+                display: none;
+                pointer-events: none;
+                z-index: 2;
+                position: absolute;
+                font-size: 15px;
+                text-transform: uppercase;
+                text-align: center;
+                bottom: 5px;
+                left: 0;
+                right: 0;
+                color: white;
+            }
+
+            .over-lay {
+                pointer-events: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            i {
+                display: none;
+                pointer-events: none;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 30px;
+                color: white;
+            }
+
+            &:hover {
+                .over-lay {
+                    opacity: 0.5;
+                }
+
+                img {
+                    transform: scale(1.2);
+                }
+
+                .gallery-item-title {
+                    display: block;
+                }
+
+                i {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .slick-slider {
+        button {
+            display: none !important;
+        }
+    }
+}

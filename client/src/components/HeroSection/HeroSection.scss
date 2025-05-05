@@ -1,0 +1,120 @@
+@import '../../styles/variables';
+
+.hero-section-container {
+    padding: 0 30px;
+
+    .category-section-container {
+        display: flex;
+        justify-content: space-between;
+
+        .category-section {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 20px;
+            padding: 0 5px;
+
+
+            .category-image {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                border-radius: 20px;
+
+                img {
+                    border-radius: 20px;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                    filter: brightness(0.7);
+                    transition: transform 1s ease, filter 1s ease;
+
+                    &:hover {
+                        transform: scale(1.2);
+                        filter: brightness(1);
+                    }
+                }
+            }
+
+            .category-description {
+                pointer-events: none;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                padding: 20px;
+
+                .category-title {
+                    font-size: 30px;
+                    font-weight: bold;
+                    color: white;
+                    margin-bottom: 10px;
+                    text-transform: uppercase;
+                }
+
+                button {
+                    border: none;
+                    background-color: $primary;
+                    color: white;
+                    padding: 5px 20px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    // Slick custom arrows
+    .slick-prev,
+    .slick-next {
+        z-index: 10 !important;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+
+        &::before {
+            font-family: 'FontAwesome' !important;
+            font-size: 20px;
+            color: #333 !important;
+        }
+
+        &:focus {
+            background: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        &:hover {
+            background: rgb(255, 255, 255) !important;
+        }
+    }
+
+    .slick-prev {
+        left: 20px;
+
+        &::before {
+            content: '\f104'; // angle-left
+            font-weight: 500;
+            font-size: 30px;
+        }
+    }
+
+    .slick-next {
+        right: 20px;
+
+        &::before {
+            content: '\f105'; // angle-right
+            font-weight: 500;
+            font-size: 30px;
+        }
+    }
+
+    .slick-disabled {
+        display: none !important;
+    }
+
+}
