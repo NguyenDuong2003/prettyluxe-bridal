@@ -1,0 +1,71 @@
+@import '../../../../styles/variables';
+
+.inspiration-list-container {
+    .inspiration-list {
+        padding: 0 30px;
+    }
+
+    .card-header {
+        margin: 100px 30px 30px 30px;
+        padding-top: 20px;
+        text-align: center;
+        background-color: #fff6f5;
+        border-radius: 20px;
+
+        .card-title {
+            font-family: Prata;
+            font-size: 3.5rem;
+            line-height: 4rem;
+            font-weight: 400;
+            padding-top: 20px;
+            margin-bottom: 50px;
+
+        }
+
+        .card-description {
+            display: block;
+            max-width: 500px;
+            font-family: Prata;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin: auto;
+        }
+
+        .card-header-banner {
+            position: relative;
+            height: 90vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-top: 50px;
+            border-radius: 20px;
+
+            &::before {
+                position: absolute;
+                content: "";
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: rgba(255, 246, 245, 0.3);
+            }
+        }
+
+    }
+
+    .underline {
+        position: relative;
+        border-top: 1px solid #ddd;
+        margin: 50px 0;
+        height: 1px;
+
+        svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            z-index: 1;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách sản phẩm</title>
+</head>
+<body>
+    <h1>Danh sách sản phẩm</h1>
+
+    <ul>
+        <% users.forEach(user => { %>
+            <li>
+                <strong><%= user.name %></strong> - Giá: <%= user.price %> VNĐ
+            </li>
+        <% }); %>
+    </ul>
+
+    <h2>Nội dung từ file:</h2>
+    <pre><%= fileContent %></pre>
+</body>
+</html>

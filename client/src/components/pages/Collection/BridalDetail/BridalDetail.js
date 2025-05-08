@@ -1,7 +1,8 @@
 import './BridalDetail.scss';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import ProductSection from '../../../ProductSection/ProductSection';
 import Nav from '../../../Nav/Nav';
@@ -76,10 +77,26 @@ const BridalDetail = () => {
         },
     ];
 
-    const navigate = useNavigate();
+    const leftColumn = products1.filter(
+        (_, index) => index % 2 === 0 && index < 6
+    );
+    const rightColumn = products1.filter(
+        (_, index) => index % 2 === 1 && index < 6
+    );
 
-    const handleClick = (id) => {
-        navigate(`/collections/bridal/${id}`);
+    const navigate = useNavigate();
+    const { id } = useParams();
+
+    useEffect(() => {
+        window.scrollTo(0, 0); // Cuộn lên đầu sau khi trang này được mount
+    }, [id]);
+
+    const handleClickAllBridal = (id) => {
+        navigate(`/bridal-dress/view-all/${id}`);
+    };
+
+    const handleClickProductDetail = (id) => {
+        navigate(`/product/${id}`);
     };
 
     return (
@@ -112,37 +129,119 @@ const BridalDetail = () => {
                     <div className="card-btn">
                         <button
                             className="cta-button"
-                            onClick={() => handleClick(1)}
+                            onClick={() => handleClickAllBridal(1)}
                         >
                             View ALL
                         </button>
                     </div>
-                    <div className="underline">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="30"
-                            height="30"
-                            viewBox="0 0 12 12"
-                            fill="none"
-                        >
-                            <rect
-                                x="5.99991"
-                                y="1.58603"
-                                width="6"
-                                height="6"
-                                transform="rotate(45 5.99991 1.58603)"
-                                fill="#695C5C"
-                                stroke="white"
-                                strokeWidth="2"
-                            ></rect>
-                        </svg>
-                    </div>
+                </div>
+                <div className="underline">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="30"
+                        height="30"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                    >
+                        <rect
+                            x="5.99991"
+                            y="1.58603"
+                            width="6"
+                            height="6"
+                            transform="rotate(45 5.99991 1.58603)"
+                            fill="#695C5C"
+                            stroke="white"
+                            strokeWidth="2"
+                        ></rect>
+                    </svg>
                 </div>
                 {/* <h2 className="heading h2" data-category-name="">
                     Eye-catching{' '}
                     <span className="lastword h1-italic">Elegance</span>
                 </h2> */}
                 <ProductSection products={products1} />
+            </div>
+            <div className="collection-highlight">
+                <div className="collection-text">
+                    <h2>Allure Spring 2025 Collection</h2>
+                    <p>
+                        Photographed in the golden southern sunlight of
+                        provençal France, the Spring 2025 Allure Bridals
+                        collection exudes warmth and classic beauty. The
+                        historic Chateau de Berne provides a richly textured
+                        backdrop for the timeless silhouettes and romantic
+                        lacework of our latest designs, weaving a bit of ancient
+                        magic and tradition into the campaign and even the gowns
+                        themselves.
+                    </p>
+                    <button
+                        className="shop-btn"
+                        onClick={() => handleClickAllBridal(1)}
+                    >
+                        SHOP THE COLLECTION
+                    </button>
+                </div>
+                <div className="collection-images">
+                    <img
+                        src={products1[0].image1}
+                        alt="Model 1"
+                        className="img-small"
+                    />
+                    <img
+                        src={products1[1].image1}
+                        alt="Model 2"
+                        className="img-large"
+                    />
+                </div>
+            </div>
+
+            <div className="underline">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="30"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                >
+                    <rect
+                        x="5.99991"
+                        y="1.58603"
+                        width="6"
+                        height="6"
+                        transform="rotate(45 5.99991 1.58603)"
+                        fill="#695C5C"
+                        stroke="white"
+                        strokeWidth="2"
+                    ></rect>
+                </svg>
+            </div>
+
+            <div className="bridal-gallery">
+                <div className="gallery-column">
+                    {leftColumn.map((item, idx) => (
+                        <img
+                            key={idx}
+                            src={item.image1}
+                            alt={`Dress ${idx * 2 + 1}`}
+                            onClick={() => {
+                                handleClickProductDetail(item.id);
+                            }}
+                        />
+                    ))}
+                </div>
+                <div className="gallery-column">
+                    {rightColumn.map((item, idx) => (
+                        <img
+                            key={idx}
+                            src={item.image1}
+                            alt={`Dress ${idx * 2 + 2}`}
+                            onClick={() => {
+                                handleClickProductDetail(item.id);
+                            }}
+                        />
+                    ))}
+                </div>
+                <div className="bridal-gallery-over-background"></div>
             </div>
             <Footer />
         </div>

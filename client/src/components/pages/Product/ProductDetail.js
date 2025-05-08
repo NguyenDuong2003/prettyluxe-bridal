@@ -19,12 +19,10 @@ import product5_hover from '../../../assets/images/products/product5_hover.png';
 import product6 from '../../../assets/images/products/product6.png';
 import product6_hover from '../../../assets/images/products/product6_hover.png';
 
-const images = [product1, product2, product3];
-
 const ProductDetail = () => {
-    const { id } = useParams();
-    const [selectedImage, setSelectedImage] = useState(images[0]);
-
+    const ratings = [5, 4, 3, 2, 1];
+    const counts = { 5: 1, 4: 0, 3: 0, 2: 0, 1: 0 };
+    const images = [product1, product2, product3];
     const products1 = [
         {
             id: 1,
@@ -80,12 +78,15 @@ const ProductDetail = () => {
         },
     ];
 
+    const { id } = useParams();
+    const [selectedImage, setSelectedImage] = useState(images[0]);
+
     useEffect(() => {
         window.scrollTo(0, 0); // Cuộn lên đầu sau khi trang này được mount
     }, [id]);
 
     return (
-        <>
+        <div className="product-detail-container">
             <Nav />
             <div className="product-detail">
                 <div className="product-detail__left">
@@ -154,8 +155,56 @@ const ProductDetail = () => {
                 </div>
             </div>
             <ProductSection title="Relevant" mode="dark" products={products1} />
+            <div className="review-summary">
+                <h4>REVIEWS</h4>
+                <h2>Here's what our brides are saying</h2>
+                <div className="tabs">
+                    <span className="active">Reviews</span>
+                    <span>Questions</span>
+                </div>
+                <div className="summary-container">
+                    <div className="left">
+                        <div className="score">5.0</div>
+                        <div className="hearts">
+                            {Array.from({ length: 5 }).map((_, i) => (
+                                <span key={i}>💗</span>
+                            ))}
+                        </div>
+                        <div className="review-count">1 Review</div>
+                        <button className="write-btn">WRITE A REVIEW</button>
+                    </div>
+
+                    <div className="middle">
+                        <div className="percent">✔ 100%</div>
+                        <div className="recommend">
+                            of respondents would
+                            <br />
+                            recommend this to a friend
+                        </div>
+                    </div>
+
+                    <div className="right">
+                        {ratings.map((r) => (
+                            <div className="bar-row" key={r}>
+                                <span className="label">{r} Hearts</span>
+                                <div className="bar-container">
+                                    <div
+                                        className="bar"
+                                        style={{
+                                            width: `${
+                                                counts[r] > 0 ? 100 : 0
+                                            }%`,
+                                        }}
+                                    ></div>
+                                </div>
+                                <span className="count">{counts[r]}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
             <Footer />
-        </>
+        </div>
     );
 };
 

@@ -3,12 +3,257 @@
 .collection-bridal-container {
     margin-top: 80px;
 
+
+    .brand-showcase {
+        padding: 10px 30px 30px 30px;
+
+        .brand-showcase-header {
+            text-align: center;
+
+            .brand-showcase-title {
+                text-transform: uppercase;
+                margin-bottom: 10px;
+
+                &::first-letter {
+                    color: $primary;
+                }
+            }
+
+            .brand-showcase-underline {
+                display: inline-block;
+                position: relative;
+                color: #c69c7b;
+                padding: 0 20px;
+                margin-bottom: 20px;
+
+                &::before,
+                &::after {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    height: 1px;
+                    background-color: #c69c7b;
+                    width: 200px;
+
+                    @media (max-width: 576px) {
+                        width: 80px;
+                    }
+                }
+
+                &::before {
+                    right: 100%;
+                }
+
+                &::after {
+                    left: 100%;
+                }
+            }
+        }
+
+
+
+        &__grid {
+            display: flex;
+            gap: 20px;
+            height: 500px;
+
+            .brand-card {
+                cursor: pointer;
+                border-radius: 10px;
+
+                img {
+                    transition: transform 1s ease;
+                }
+
+                &:hover {
+                    img {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+
+            .left,
+            .center {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                .brand-card.large {
+                    position: relative;
+                    overflow: hidden;
+                    height: 100%;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        display: block;
+                    }
+
+                    .brand-info {
+                        position: absolute;
+                        bottom: 20px;
+                        left: 20px;
+                        color: white;
+                        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+
+                        h2 {
+                            font-size: 2rem;
+                            margin: 0;
+                        }
+
+                        p {
+                            font-size: 1rem;
+                            margin-top: 5px;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+
+            .left {
+                flex: 1;
+
+                .brand-card.large {
+                    .brand-info {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -20%);
+
+                        h2 {
+                            font-size: 2.5rem;
+                            margin: 0;
+                        }
+
+                        p {
+                            font-size: 1.25rem;
+                            margin-top: 5px;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+
+            .right {
+                width: 250px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 20px;
+
+                .brand-card.small {
+                    position: relative;
+                    overflow: hidden;
+                    height: 50%;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        display: block;
+                    }
+
+                    .brand-info {
+                        position: absolute;
+                        bottom: 15px;
+                        left: 15px;
+                        color: white;
+                        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+                        h2 {
+                            font-size: 1.2rem;
+                            margin: 0;
+                        }
+
+                        p {
+                            font-size: 0.9rem;
+                            margin-top: 5px;
+                        }
+                    }
+                }
+
+                .social-box {
+                    flex: 1;
+                    background-color: #fceee8;
+                    text-align: center;
+                    padding: 20px;
+                    border: 1px solid #f0dcd1;
+                    // margin-top: 20px;
+
+                    h3 {
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                        margin: 30px 0;
+                    }
+
+                    hr {
+                        width: 30px;
+                        margin: 0 auto 10px;
+                        border: none;
+                        height: 2px;
+                        background-color: #c69c7b;
+                    }
+
+                    .icons {
+                        display: flex;
+                        justify-content: center;
+                        gap: 15px;
+                        margin: 30px 0;
+
+                        i {
+                            font-size: 35px;
+                            color: #9e705c;
+                            cursor: pointer;
+
+                            &:hover {
+                                color: #c69c7b;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 992px) {
+            height: auto;
+
+            &__grid {
+                flex-direction: column;
+
+                .left,
+                .center,
+                .right {
+                    width: 100%;
+
+                    .brand-card.large,
+                    .brand-card.small {
+                        height: auto;
+                    }
+                }
+
+                .right {
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    gap: 15px;
+
+                    .social-box {
+                        flex: 1 1 100%;
+                    }
+                }
+            }
+        }
+    }
+
+
+
     .collection-bridal-card {
 
         .card-header {
-            margin: 100px 30px 30px 30px;
+            margin: 80px 30px 0px 30px;
             padding: 30px;
-            background-color: #fae9f1;
+            background-color: #fff6f5;
             border-radius: 20px;
 
             .card-title {
@@ -44,21 +289,21 @@
             }
 
         }
+    }
 
-        .underline {
-            position: relative;
-            border-top: 1px solid #ddd;
-            margin: 20px 0 50px 0;
-            height: 1px;
+    .underline {
+        position: relative;
+        border-top: 1px solid #ddd;
+        margin: 20px 0 50px 0;
+        height: 1px;
 
-            svg {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: white;
-                z-index: 1;
-            }
+        svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            z-index: 1;
         }
     }
 }

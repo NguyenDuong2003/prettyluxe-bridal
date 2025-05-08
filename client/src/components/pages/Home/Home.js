@@ -199,7 +199,11 @@ const Home = () => {
             <Nav />
             <Banner />
             <HeroSection />
-            <ProductSection title="new arrivals" products={products1} />
+            <ProductSection
+                title="new arrivals"
+                products={products1}
+                mode="light"
+            />
             <ProductSection
                 title="top sellers"
                 mode="dark"
@@ -232,7 +236,11 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <ProductSection title="new trends" products={products3} />
+            <ProductSection
+                title="new trends"
+                products={products3}
+                mode="light"
+            />
             <GallerySection />
             <Footer />
         </div>
