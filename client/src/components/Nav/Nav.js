@@ -66,7 +66,7 @@ const Nav = () => {
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/collections/bridal">
-                                SHOP
+                                BRIDAL
                             </Link>
                         </li>
                         <li className="nav-item">
